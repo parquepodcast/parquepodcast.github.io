@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>CALCULO</title>
+</head>
+<header>
+    <script src="main.js"></script>
+</header>
+<body>
+
+<form class="general">
+<h1 class="h1">CALCULADORA DE PUBLICIDAD DIGITAL</h1>
+<div class="calc1">
+  <p>Si tengo este CTR</p>
+<input class="number-input" type="number" placeholder="CTR" id="ctr-number" min="1">
+<p>Y quiero llegar a estos clics</p>
+<input class="number-input" type="number" placeholder="CLICS" id="clics-number" min="1">
+
+<input class="button-input"  type="button" value="Calcular" onclick="Calc1()">
+<p class="resultado">Necesito esta cantidad de impresiones</p>
+<span class="total" id="total1"></span>
+</div>
+
+<div class="calc2">
+  <p>Si quiero esta cantidad de impresiones visibles</p>
+    <input class="number-input"  type="number" placeholder="IMP VISIBLES" id="imp-number" min="1">
+    <p>Con este viewability</p>
+    <input class="number-input"  type="number" placeholder="VIEWABILITY" id="view-number" min="1">
+    
+    <input class="button-input" type="button" value="Calcular" onclick="Calc2()">
+    <p class="resultado">Necesito entregar esta cantidad de impresiones</p>
+    <span class="total" id="total2"></span>
+    </div>
+
+<div class="calc3">
+  <p>Si ofrezco esta cantidad de impresiones</p>
+      <input class="number-input" type="number" placeholder="IMPRESIONES" id="impresiones-number" min="1">
+      <p>A este CPM</p>
+      <input class="number-input" type="number" placeholder="CPM" id="cpm-number" min="1">
+      
+      <input class="button-input" type="button" value="Calcular" onclick="Calc3()">
+      <p class="resultado">El costo total es</p>
+      <span class="total" id="total3"></span>
+      </div>
+    </form>  
+<script>
+    function Calc1() {
+    var ctr = parseFloat(document.getElementById('ctr-number').value);
+    var clics = parseFloat(document.getElementById('clics-number').value);
+    var total1 = document.getElementById('total1');
+      return total1.innerHTML = new Intl.NumberFormat("de-DE").format(((100 / ctr) * clics).toFixed(0));
+    }
+
+    function Calc2() {
+    var imp = parseFloat(document.getElementById('imp-number').value);
+    var view = parseFloat(document.getElementById('view-number').value);
+    var total2 = document.getElementById('total2');
+      return total2.innerHTML = new Intl.NumberFormat("de-DE").format(((100 * imp) / view).toFixed(0));
+    }
+
+    function Calc3() {
+    var impresiones = parseFloat(document.getElementById('impresiones-number').value);
+    var cpm = parseFloat(document.getElementById('cpm-number').value);
+    var total2 = document.getElementById('total3');
+      return total3.innerHTML = "$" + new Intl.NumberFormat("de-DE").format((cpm * (impresiones/1000)).toFixed(2));
+    }
+</script>
+
+</body>
+</html>
